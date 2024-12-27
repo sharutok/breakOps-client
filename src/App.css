@@ -1,0 +1,44 @@
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url("./fonts/SourceSansPro-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Archive;
+  src: url("./fonts/Archive-Regular.otf") format("opentype");
+}
+
+html,
+body {
+  font-family: "Source Sans Pro";
+  padding: 0;
+  margin: 0;
+}
+
+/* For Webkit based browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 7px; /* Width of the scrollbar */
+  height: 7px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff; /* Track color */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888; /* Thumb color */
+  border-radius: 6px;
+}
+
+@font-face {
+  font-family: "Brandon Grotesque";
+  src: url("./fonts/BrandonGrotesque-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
