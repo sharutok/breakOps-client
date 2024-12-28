@@ -1,5 +1,6 @@
 const port = import.meta.env.VITE_BACKEND_PORT
-const url =`http://localhost:${port}/api/v1`
+const host = import.meta.env.VITE_BACKEND_HOST
+const url =`http://${host}:${port}/api/v1`
 
 export const endpoints = {
     dashboard: `${url}/dashboard`,

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback,useState, useEffect } from 'react'
 import ElectrodeBoard from './ElectrodeBoard'
 import AutomigBoard from './AutomigBoard'
 import axios from 'axios'
@@ -9,13 +9,18 @@ import {
 import { endpoints } from './endpoints'
 import Header from './Header'
 import dayjs from 'dayjs'
+import RefreshAlert from './RefreshAlert'
 
 function Dashboard() {
-
+    const [open, setOpen] = useState(false);
     const { isLoading, data, isError } = useQuery({ queryKey: ['dashboard-data'], queryFn: getData, staleTime: Infinity })
 
     async function getData() {
         try {
+            setOpen(true)
+            setTimeout(() => {
+                setOpen(false)
+            },2500)
             const data = await axios.post(endpoints.dashboard,
                 {
                     start_date: window.sessionStorage.getItem("start_date"),
@@ -42,13 +47,17 @@ function Dashboard() {
         setDefaultDate();
     }, [setDefaultDate]);
    
+    setInterval(() => {
+        getData()  
+    }, 120000)
     
     if (isLoading) {
         return(<>Loading.....</>)
     }
     return (
       <div>
-            <Header/>
+            <Header />
+            <RefreshAlert open={open} setOpen={setOpen } />
             <div className='flex gap-10 mx-10 my-10'>
                 <ElectrodeBoard data={data?.data?.electrode} />
                 <AutomigBoard data={data?.data?.auto_mig} />
