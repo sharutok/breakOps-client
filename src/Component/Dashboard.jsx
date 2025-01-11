@@ -13,14 +13,18 @@ import RefreshAlert from './RefreshAlert'
 
 function Dashboard() {
     const [open, setOpen] = useState(false);
-    const { isLoading, data, isError } = useQuery({ queryKey: ['dashboard-data'], queryFn: getData, staleTime: Infinity })
+    const { isLoading, data, isError } = useQuery({
+        queryKey: ['dashboard-data'], queryFn: getData,
+        staleTime: 1000,
+        refetchInterval: 15000, // Fetch data every 10 seconds
+    })
 
     async function getData() {
         try {
             setOpen(true)
             setTimeout(() => {
                 setOpen(false)
-            },2500)
+            },1500)
             const data = await axios.post(endpoints.dashboard,
                 {
                     start_date: window.sessionStorage.getItem("start_date"),
@@ -46,10 +50,10 @@ function Dashboard() {
     useEffect(() => {
         setDefaultDate();
     }, [setDefaultDate]);
-   
-    setInterval(() => {
-        getData()  
-    }, 120000)
+
+    // setInterval(() => {
+    //     getData()
+    // }, 30000)
     
     if (isLoading) {
         return(<>Loading.....</>)
