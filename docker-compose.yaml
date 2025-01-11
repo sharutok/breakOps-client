@@ -1,6 +1,6 @@
 version: '3'
 services:
-  react-vite-nginx-app:
+  break-ops-client:
     build:
       context: .
       dockerfile: Dockerfile
