@@ -16,7 +16,7 @@ function Dashboard() {
     const { isLoading, data, isError } = useQuery({
         queryKey: ['dashboard-data'], queryFn: getData,
         staleTime: 1000,
-        refetchInterval: 15000, // Fetch data every 10 seconds
+        refetchInterval: 15 * 60 * 1000, // Fetch data every 10 seconds
     })
 
     async function getData() {
