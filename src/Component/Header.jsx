@@ -8,9 +8,9 @@ function Header() {
           <img src='https://adorwelding.org/Adorhub_uploads/PCM.png' width={40} />
           <span className='text-xl'>ADOROPS - Raipur</span>
             </div>
-            <div onClick={()=>window.location.href="/settings"} className='items-center flex gap-2 cursor-pointer'>
+            {/* <div onClick={()=>window.location.href="/settings"} className='items-center flex gap-2 cursor-pointer'>
                 Manage
-            </div>
+            </div> */}
       </div>
   )
 }
